@@ -26,7 +26,6 @@ public class SceneControlScript : MonoBehaviour
     {
         if (done)
         {
-            UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
             return;
         }
@@ -91,7 +90,6 @@ public class SceneControlScript : MonoBehaviour
     public void setAnswer(int answer)
     {
         File.WriteAllText(path, answer.ToString());
-        UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 }
