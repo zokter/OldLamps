@@ -26,8 +26,11 @@ public class SceneControlScript : MonoBehaviour
     {
         if (done)
         {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
-            return;
+#endif
         }
         timer -= Time.deltaTime;
 
@@ -90,6 +93,10 @@ public class SceneControlScript : MonoBehaviour
     public void setAnswer(int answer)
     {
         File.WriteAllText(path, answer.ToString());
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
     }
 }
